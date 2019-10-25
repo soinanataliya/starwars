@@ -52,7 +52,7 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   margin: 40px;
-  width: 600px;
+  width: 1200px;
   &__ship {
     cursor: pointer;
     background-color: white;

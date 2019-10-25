@@ -1,5 +1,4 @@
-// const Foo = { template: '<div>planets</div>' };
-// const Bar = { template: '<div>ships</div>' };
+
 import Planets from './components/Planets.vue';
 import People from './components/People.vue';
 import StarShips from './components/StarShips.vue';
