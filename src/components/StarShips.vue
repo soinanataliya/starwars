@@ -7,7 +7,7 @@
         class="ships__ship"
         >
         <router-link :to="{ path: `/ships/${getId(ship)}`, name: 'StarShip',
-        params: { ship: ship, id: getId(ship)}}" style='text-decoration: none; color: #2c3e50;'>
+        params: { id: getId(ship)}}" style='text-decoration: none; color: #2c3e50;'>
           {{ ship.name }}
         </router-link>
       </v-list-item>
@@ -52,7 +52,6 @@ export default {
   flex-flow: row nowrap;
   justify-content: center;
   margin: 40px;
-  width: 1200px;
   &__ship {
     cursor: pointer;
     background-color: white;

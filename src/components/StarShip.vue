@@ -10,16 +10,25 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'StarShip',
   props: {
-    ship: {
-      type: Object,
+    id: {
+      type: Number,
       required: true,
     },
   },
   mounted() {
-    console.log(this.$route);
+    axios
+      .get(`https://swapi.co/api/starships${this.id}`)
+      .then((res) => {
+        this.result = res.data.results;
+      })
+      .catch((err) => {
+        this.$emit('error', err);
+      });
   },
 };
 </script>

@@ -4,7 +4,7 @@
       <v-list-item
         v-for="(person, index) in result"
         :key="index"
-        @click="choosePerson(index)"
+        @click="choosePerson(person)"
         class="people__list"
         >{{ person.name }}</v-list-item>
     </v-list>
@@ -21,6 +21,7 @@
 
 <script>
 import axios from 'axios';
+// import { getId } from '../utils/getId';
 
 export default {
   data() {
@@ -41,9 +42,23 @@ export default {
       });
   },
   methods: {
-    choosePerson(index) {
+    choosePerson(person) {
       this.showInfo = true;
-      this.chosenPerson = this.result[index];
+      // this.chosenPerson = this.result[index];
+      const id = this.getId(person);
+      axios
+        .get(`https://swapi.co/api/people/${id}`)
+        .then((res) => {
+          this.chosenPerson = res.data;
+        })
+        .catch((err) => {
+          this.$emit('error', err);
+        });
+    },
+    getId(obj) {
+      const { url } = obj;
+      const urlArr = url.split('/');
+      return urlArr[urlArr.length - 2];
     },
   },
 };
